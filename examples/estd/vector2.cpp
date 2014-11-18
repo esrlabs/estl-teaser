@@ -1,3 +1,8 @@
+/**
+ * \file
+ * \ingroup estl
+ * \copyright   E.S.R.Labs AG, 2014, All rights reserved.
+ */
 
 #include <cstdio>
 

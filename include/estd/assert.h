@@ -1,3 +1,9 @@
+/**
+ * \file
+ * \ingroup estl
+ * \copyright   E.S.R.Labs AG, 2014, All rights reserved.
+ */
+
 #ifndef ESTD_ASSERT_H
 #define ESTD_ASSERT_H
 
