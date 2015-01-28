@@ -7,7 +7,7 @@
 #include <cstdio>
 
 #include <estd/vector.h>
-
+#include <estd/uncopyable.h>
 
 /*
  * An example of using the vector with uncopyable objects.
@@ -26,7 +26,8 @@ class MyClass
 
 public:
 
-    MyClass() : fValue(-1) { }
+    MyClass(int value) : fValue(value) { fprintf(stderr, "Creating class\n"); }
+    ~MyClass() { fprintf(stderr, "Deleting MyClass\n"); }
 
     void setValue(int value) { fValue = value; }
 
@@ -52,10 +53,9 @@ void fillVec(esrlabs::estd::vector<MyClass>& aVec, size_t count)
         // make sure that the vector is not full. Otherwise
         // the vector will assert!
         if(!aVec.full()) {
-            // Use the push_back method that returns a reference to an
-            // underlying element.
+            // Use the emplace method to create an object in place
 
-            aVec.push_back().setValue(i);
+            aVec.emplace_back().construct(i);
         }
     }
 }
@@ -89,14 +89,14 @@ int main()
     // declare a vector of 10 MyClass objects
     esrlabs::estd::declare::vector<MyClass, 10> vec;
 
-    MyClass mc;
-
     // fill the vector with 20 items. It will only add
     // 10 because that is the size of our vector
-    fillVec(vec, 20);
+    fillVec(vec, 2);
+    vec.erase(vec.begin());
+#if 0
     printVec(vec);
     scaleVec(vec, 10);
     printVec(vec);
-
+#endif
     return 0;
 }
