@@ -91,7 +91,7 @@ int main()
 
     // fill the vector with 20 items. It will only add
     // 10 because that is the size of our vector
-    fillVec(vec, 2);
+    fillVec(vec, 20);
     vec.erase(vec.begin());
 #if 0
     printVec(vec);
